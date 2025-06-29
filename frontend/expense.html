@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Frontend login app</title>
+  </head>
+  <body>
+    <h1>Daily Expenses</h1>
+    <br /><br />
+    <form action="" onsubmit="handleSubmit(event)">
+      <label for="amount">Amount: </label>
+      <input type="number" name="amount" id="amount" required />
+      <br /><br />
+      <label for="description">Description: </label>
+      <input type="text" name="description" id="description" required />
+      <br /><br />
+      <label for="category">Category: </label>
+      <select name="category" id="category" required>
+        <option value="food">Food</option>
+        <option value="petrol">Petrol</option>
+        <option value="salary">Salary</option>
+        <option value="health">Health</option>
+        <option value="cloths">Cloths</option>
+      </select>
+      <br /><br />
+      <button>Submit</button>
+      <br /><br />
+      <button
+        id="premium"
+        onclick="initiatePayment()"
+        style="background-color: rgb(236, 101, 124)"
+      >
+        Buy Premium
+      </button>
+      <br /><br />
+    </form>
+    <div id="list">
+      <ul></ul>
+    </div>
+    <br /><br />
+    <div id="pageButton">
+      Row per Page
+      <select name="pageNo" id="pageNo">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+      </select>
+    </div>
+
+    <br /><br />
+    <div id="newPageButton"></div>
+    <div id="leaderBoard"><ul id="leaderBoardList"></ul></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <script>
+    const initiatePayment = async () => {
+      try {
+        const token = JSON.parse(localStorage.getItem("token"));
+        const res = await axios.get(
+          "http://13.200.237.174:8000/payment/sessionId",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const paymentSessionId = res.data.id;
+        console.log(paymentSessionId);
+
+        const cashfree = await Cashfree({
+          mode: "sandbox",
+        });
+
+        await cashfree.checkout({
+          paymentSessionId,
+          redirectTarget: "_self",
+        });
+      } catch (err) {
+        console.error("Cashfree checkout error:", err);
+      }
+    };
+  </script>
+  <script src="expense.js"></script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dailyExpenses.css" />
+    <title>Daily Expenses</title>
+  </head>
+  <body>
+    <div id="header">
+      <p>Track your spending effectively!</p>
+      <h1>Day to Day Expenses</h1>
+    </div>
+    <h1>Last 10 Day Details</h1>
+    <div id="excel-table" class="excel-table">
+      <div class="excel-row header">
+        <div class="excel-cell">Date</div>
+        <div class="excel-cell">Description</div>
+        <div class="excel-cell">Category</div>
+        <div class="excel-cell">Income</div>
+        <div class="excel-cell">Expenses</div>
+      </div>
+      <div id="values"></div>
+      <!-- <div class="excel-row">
+        <div class="excel-cell">2025-06-22</div>
+        <div class="excel-cell">Groceries</div>
+        <div class="excel-cell">Food</div>
+        <div class="excel-cell">₹500</div>
+        <div class="excel-cell">₹500</div>
+      </div>
+      <div class="excel-row">
+        <div class="excel-cell">2025-06-21</div>
+        <div class="excel-cell">Transport</div>
+        <div class="excel-cell">Travel</div>
+        <div class="excel-cell">₹150</div>
+        <div class="excel-cell">₹150</div>
+      </div> -->
+      <div id="result" class="excel-row">
+        <div class="excel-cell"></div>
+        <div class="excel-cell"></div>
+        <div style="color: blue" class="excel-cell">Total</div>
+        <div id="totalIncome" style="color: green" class="excel-cell">₹650</div>
+        <div id="totalExpenses" style="color: red" class="excel-cell">₹650</div>
+      </div>
+    </div>
+    <h1>Monthly Report</h1>
+    <div class="excel-table">
+      <div class="excel-row header">
+        <div class="excel-cell">Month</div>
+        <div class="excel-cell">Income</div>
+        <div class="excel-cell">Expense</div>
+        <div class="excel-cell">Saving</div>
+      </div>
+      <div class="excel-row">
+        <div class="excel-cell">March</div>
+        <div class="excel-cell">₹650</div>
+        <div class="excel-cell">₹650</div>
+        <div class="excel-cell">₹500</div>
+      </div>
+      <div class="excel-row">
+        <div class="excel-cell">Feburary</div>
+        <div class="excel-cell">₹650</div>
+        <div class="excel-cell">₹650</div>
+        <div class="excel-cell">₹500</div>
+      </div>
+      <div class="excel-row">
+        <div class="excel-cell"></div>
+        <div style="color: blue" class="excel-cell">Total</div>
+        <div style="color: green" class="excel-cell">₹650</div>
+        <div style="color: red" class="excel-cell">₹650</div>
+      </div>
+    </div>
+    <div id="downloadFile"><button>Download Details</button></div>
+    <div id="footer">All rights reserved by @ritik</div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="dailyExpenses.js"></script>
+</html>

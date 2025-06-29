@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+  </head>
+  <body>
+    <form action="" onsubmit="handleSubmit(event)">
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email" required />
+      <br /><br />
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" required />
+      <br /><br />
+      <label for="rePassword">Re-enterPassword: </label>
+      <input type="rePassword" name="rePassword" id="rePassword" required />
+      <br /><br />
+      <button>Reset Password</button>
+      <br /><br />
+    </form>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+
+      console.log(event);
+
+      const data = {
+        email: event.target.email.value,
+        password: event.target.password.value,
+      };
+      console.log(data);
+
+      try {
+        const res = await axios.post(
+          `http://13.200.237.174:8000/user/changePassword`,
+          data
+        );
+
+        alert(res.data.msg);
+        //window.location.href = "./signupBackend/frontend/login.html";
+      } catch (error) {
+        // alert(error.response.data.msg);
+        console.log(error);
+      }
+
+      event.target.email.value = "";
+      event.target.password.value = "";
+    };
+  </script>
+</html>
