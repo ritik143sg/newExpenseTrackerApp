@@ -13,7 +13,7 @@ const handleSubmit = async (event) => {
   try {
     console.log("User Post Request");
     const res = await axios.post(
-      `http://13.200.237.174:8000/user/signup/add`,
+      `http://13.232.57.29:8000/user/signup/add`,
       data
     );
     console.log(res);

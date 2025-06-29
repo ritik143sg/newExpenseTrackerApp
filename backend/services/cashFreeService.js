@@ -32,7 +32,7 @@ const createOrder = async (
         customer_email: customerEmail,
       },
       order_meta: {
-        return_url: `${process.env.LOCALHOST}/payment/status/${orderId}`,
+        return_url: `http://13.232.57.29:8000/payment/status/${orderId}`,
         payment_methods: "ccc, upi, nb",
       },
       order_expiry_time: formattedExpiryDate,

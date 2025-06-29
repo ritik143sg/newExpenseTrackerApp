@@ -12,15 +12,11 @@ const handleSubmit = async (event) => {
 
   try {
     const token = JSON.parse(localStorage.getItem("token"));
-    const res = await axios.post(
-      `http://13.200.237.174:8000/expense/add`,
-      data,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await axios.post(`http://13.232.57.29:8000/expense/add`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     // showItems();
     inintialize();
   } catch (error) {
@@ -74,7 +70,7 @@ const paginatingButton = (page) => {
     preButton.addEventListener("click", async () => {
       const limit = JSON.parse(localStorage.getItem("pageNo"));
       const expenses = await axios.get(
-        `http://13.200.237.174:8000/expense/${
+        `http://13.232.57.29:8000/expense/${
           Number(page.pageId) - 1
         }?limit=${limit}`,
         {
@@ -107,7 +103,7 @@ const paginatingButton = (page) => {
     currButton.addEventListener("click", async () => {
       const limit = JSON.parse(localStorage.getItem("pageNo"));
       const expenses = await axios.get(
-        `http://13.200.237.174:8000/expense/${Number(
+        `http://13.232.57.29:8000/expense/${Number(
           page.pageId
         )}?limit=${limit}`,
         {
@@ -142,7 +138,7 @@ const paginatingButton = (page) => {
     nextButton.addEventListener("click", async () => {
       const limit = JSON.parse(localStorage.getItem("pageNo"));
       const expenses = await axios.get(
-        `http://13.200.237.174:8000/expense/${
+        `http://13.232.57.29:8000/expense/${
           Number(page.pageId) + 1
         }?limit=${limit}`,
         {
@@ -195,14 +191,11 @@ async function display(item) {
   try {
     del.addEventListener("click", async () => {
       const token = JSON.parse(localStorage.getItem("token"));
-      await axios.delete(
-        `http://13.200.237.174:8000/expense/delete/${item.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.delete(`http://13.232.57.29:8000/expense/delete/${item.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       inintialize();
     });
   } catch (error) {
@@ -232,7 +225,7 @@ async function inintialize() {
     const limit = JSON.parse(localStorage.getItem("pageNo"));
 
     const expenses = await axios.get(
-      `http://13.200.237.174:8000/expense/${id}/?limit=${limit}`,
+      `http://13.232.57.29:8000/expense/${id}/?limit=${limit}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -252,7 +245,7 @@ async function inintialize() {
   const premiumButton = document.getElementById("premium");
 
   try {
-    const result = await axios.get(`http://13.200.237.174:8000/order`, {
+    const result = await axios.get(`http://13.232.57.29:8000/order`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -295,7 +288,7 @@ async function inintialize() {
 
           leaderBoardButton.addEventListener("click", async () => {
             const expenses = await axios.get(
-              `http://13.200.237.174:8000/premiumFeature`,
+              `http://13.232.57.29:8000/premiumFeature`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -323,7 +316,7 @@ async function inintialize() {
     const limit = JSON.parse(localStorage.getItem("pageNo"));
 
     const expenses = await axios.get(
-      `http://13.200.237.174:8000/expense/${id}/?limit=${limit}`,
+      `http://13.232.57.29:8000/expense/${id}/?limit=${limit}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

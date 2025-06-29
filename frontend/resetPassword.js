@@ -7,7 +7,7 @@ const handleSubmit = async (event) => {
 
   try {
     const res = await axios.post(
-      `http://13.200.237.174:8000/password/forgetPassword`,
+      `http://13.232.57.29:8000/password/forgetPassword`,
       data
     );
     const password = res.data.user.password;

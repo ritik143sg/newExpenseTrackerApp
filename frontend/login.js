@@ -7,7 +7,7 @@ const handleSubmit = async (event) => {
   };
 
   try {
-    const res = await axios.post(`http://13.200.237.174:8000/user/login`, data);
+    const res = await axios.post(`http://13.232.57.29:8000/user/login`, data);
 
     const token = res.data.token;
     const userId = res.data.user.id;

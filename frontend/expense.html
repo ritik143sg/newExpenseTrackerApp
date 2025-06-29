@@ -62,7 +62,7 @@
       try {
         const token = JSON.parse(localStorage.getItem("token"));
         const res = await axios.get(
-          "http://13.200.237.174:8000/payment/sessionId",
+          "http://13.232.57.29:8000/payment/sessionId",
           {
             headers: {
               Authorization: `Bearer ${token}`,

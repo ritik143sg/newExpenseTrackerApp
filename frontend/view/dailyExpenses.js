@@ -75,7 +75,7 @@ const initialize = async () => {
     const userId = JSON.parse(localStorage.getItem("userId"));
 
     const result = await axios.get(
-      `http://13.200.237.174:8000/expense/get/${userId}`,
+      `http://13.232.57.29:8000/expense/get/${userId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -100,14 +100,11 @@ const initialize = async () => {
 
     downloadFile.addEventListener("click", async () => {
       console.log(downloadFile);
-      const result = await axios.get(
-        `http://13.200.237.174:8000/file/getfile`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const result = await axios.get(`http://13.232.57.29:8000/file/getfile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       window.open(result.data.fileUrl, "_blank");
       console.log(result.data.fileUrl);
     });
