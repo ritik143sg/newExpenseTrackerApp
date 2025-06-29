@@ -83,6 +83,6 @@ sequelize
     });
   })
   .catch((err) => {
-    logger.error({ message: err.message, stack: err.stack });
+    //logger.error({ message: err.message, stack: err.stack });
     console.error("❌ Sequelize sync failed:", err);
   });
