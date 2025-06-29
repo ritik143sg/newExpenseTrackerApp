@@ -34,6 +34,13 @@
       >
         Buy Premium
       </button>
+      <button
+        id="premium"
+        onclick="initiateLogout()"
+        style="background-color: rgb(236, 101, 124)"
+      >
+        LogOut
+      </button>
       <br /><br />
     </form>
     <div id="list">
@@ -58,6 +65,10 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
   <script>
+    const initiateLogout = () => {
+      window.location.href = "./login.html";
+    };
+
     const initiatePayment = async () => {
       try {
         const token = JSON.parse(localStorage.getItem("token"));
